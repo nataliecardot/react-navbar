@@ -18,21 +18,23 @@ const Navbar = () => {
             <FaBars />
           </button>
         </div>
-        {showLinks && (
-          <div className="links-container show-container">
-            {/* React Router DOM will be used instead of traditional links later */}
-            <ul className="links">
-              {links.map((link) => {
-                const { id, url, text } = link;
-                return (
-                  <li key={id}>
-                    <a href={url}>{text}</a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        )}
+        <div
+          className={`${
+            showLinks ? 'links-container show-container' : 'links-container'
+          }`}
+        >
+          {/* React Router DOM will be used instead of traditional links later */}
+          <ul className="links">
+            {links.map((link) => {
+              const { id, url, text } = link;
+              return (
+                <li key={id}>
+                  <a href={url}>{text}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <ul className="social-icons">
           {social.map((socialIcon) => {
             const { id, url, icon } = social;
