@@ -5,7 +5,17 @@ import logo from './logo.svg';
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
+  const linksContainerRef = useRef(null); // div
+  const linksRef = useRef(null); // ul
 
+  useEffect(() => {
+    const linksHeight = linksRef.current.getBoundingClientRect().height;
+    if (showLinks) {
+      linksContainerRef.current.style.height = `${linksHeight}px`;
+    } else {
+      linksContainerRef.current.style.height = '0';
+    }
+  }, [showLinks]);
   return (
     <nav>
       <div className="nav-center">
@@ -18,13 +28,9 @@ const Navbar = () => {
             <FaBars />
           </button>
         </div>
-        <div
-          className={`${
-            showLinks ? 'links-container show-container' : 'links-container'
-          }`}
-        >
+        <div className="links-container" ref={linksContainerRef}>
           {/* React Router DOM will be used instead of traditional links later */}
-          <ul className="links">
+          <ul className="links" ref={linksRef}>
             {links.map((link) => {
               const { id, url, text } = link;
               return (
