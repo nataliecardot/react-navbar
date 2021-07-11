@@ -30,7 +30,6 @@ const Navbar = () => {
           </button>
         </div>
         <div className="links-container" ref={linksContainerRef}>
-          {/* React Router DOM will be used instead of traditional links later */}
           <ul className="links" ref={linksRef}>
             {links.map((link) => {
               const { id, url, text } = link;
